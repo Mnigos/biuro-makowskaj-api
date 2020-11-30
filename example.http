@@ -1,0 +1,12 @@
+GET /posts HTTP/1.1
+Host: localhost:3000
+###
+POST /posts HTTP/1.1
+Host: localhost:3000
+Content-Type: application/json
+
+{
+  "title": "Simple Title",
+  "description": "Simple description",
+  "image": ""
+}
