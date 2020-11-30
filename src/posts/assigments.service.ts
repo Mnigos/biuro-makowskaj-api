@@ -1,16 +1,27 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { Assigment } from 'src/dto/assigment.interface';
 
 @Injectable()
 export class AssigmentsService {
   private readonly Assigments: Assigment[] = [];
 
-  get() {
-    return this.Assigments;
+  constructor(
+    @InjectModel('Assigment') private readonly AssigmentModel: Model<Assigment>
+  ) {}
+
+  async get() {
+    const assigments = await this.AssigmentModel.find().exec();
+    return assigments;
   }
 
-  create(Assigment: Assigment) {
+  async create(Assigment: Assigment) {
+    const newAssigment = new this.AssigmentModel(Assigment);
     this.Assigments.push(Assigment);
-    return Assigment;
+    await newAssigment
+      .save()
+      .then(() => Assigment)
+      .catch(() => 'Cannot save do database');
   }
 }
