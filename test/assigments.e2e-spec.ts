@@ -4,7 +4,7 @@ import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { CreateAssigmentDto } from '../src/dto/create-assigment.dto';
 
-describe('Getting assigments (e2e)', () => {
+xdescribe('Getting assigments (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
@@ -17,7 +17,7 @@ describe('Getting assigments (e2e)', () => {
   });
 
   it('/GET assigments', () => {
-    return request(app.getHttpServer()).get('/posts').expect(200);
+    return request(app.getHttpServer()).getAll('/posts').expect(200);
   });
 
   it('/POST assigments when everything is ok', () => {
