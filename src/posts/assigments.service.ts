@@ -21,7 +21,7 @@ export class AssigmentsService {
     this.Assigments.push(Assigment);
     await newAssigment
       .save()
-      .then(() => Assigment)
+      .then(() => true)
       .catch(() => 'Cannot save do database');
   }
 }
