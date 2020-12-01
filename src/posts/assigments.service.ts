@@ -11,17 +11,40 @@ export class AssigmentsService {
     @InjectModel('Assigment') private readonly AssigmentModel: Model<Assigment>
   ) {}
 
-  async get() {
+  async getAll(): Promise<Assigment> {
     const assigments = await this.AssigmentModel.find().exec();
     return assigments;
   }
 
-  async create(Assigment: Assigment) {
-    const newAssigment = new this.AssigmentModel(Assigment);
-    this.Assigments.push(Assigment);
-    await newAssigment
-      .save()
-      .then(() => true)
-      .catch(() => 'Cannot save do database');
+  async getOneById(id): Promise<Assigment> {
+    const assigment = await this.AssigmentModel.findOne({ _id: id }).exec();
+    return assigment;
+  }
+
+  async getOneByTitle(title): Promise<Assigment> {
+    const assigment = await this.AssigmentModel.findOne({ title }).exec();
+    return assigment;
+  }
+
+  async create(assigment: Assigment): Promise<Assigment> {
+    const newAssigment = await this.AssigmentModel.create(assigment as any);
+    return newAssigment;
+  }
+
+  async update(assigment: Assigment): Promise<Assigment> {
+    const { _id } = assigment;
+    this.AssigmentModel.update({ _id }, assigment);
+    const foundAssigment = await this.AssigmentModel.findOne({ _id }).exec();
+
+    return foundAssigment;
+  }
+
+  async delete(id: string): Promise<{ deleted: boolean; message?: string }> {
+    try {
+      await this.AssigmentModel.remove({ id });
+      return { deleted: true };
+    } catch (e) {
+      return { deleted: false, message: e.message };
+    }
   }
 }

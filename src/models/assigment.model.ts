@@ -9,7 +9,7 @@ export interface IAssigment extends Document {
 export const AssigmentSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
-  image: String,
+  image: { type: String, required: false },
 });
 
 const Assigment = model<IAssigment>('Assigment', AssigmentSchema);
