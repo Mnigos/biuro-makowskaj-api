@@ -7,6 +7,11 @@ describe('AssigmentsController', () => {
   let controller: AssigmentsController;
   let service: AssigmentsService;
 
+  const assigment = {
+    title: 'Some title ',
+    description: 'some description ',
+  };
+
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AssigmentsController],
@@ -95,7 +100,10 @@ describe('AssigmentsController', () => {
         description: 'some description',
       };
 
-      expect(controller.create(newAssigment)).resolves.toEqual(true);
+      expect(controller.create(newAssigment)).resolves.toEqual({
+        _id: expect.any(String),
+        ...assigment,
+      });
     });
 
     it('Should update an existing assigment', () => {
@@ -104,7 +112,10 @@ describe('AssigmentsController', () => {
         description: 'some description',
       };
 
-      expect(controller.update(newAssigment)).resolves.toEqual(true);
+      expect(controller.update(newAssigment)).resolves.toEqual({
+        _id: expect.any(String),
+        ...assigment,
+      });
     });
 
     it('Should return that is deleted a assigment', () => {
