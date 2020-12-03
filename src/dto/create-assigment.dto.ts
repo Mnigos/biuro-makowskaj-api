@@ -3,4 +3,5 @@ export interface CreateAssigmentDto {
   readonly title: string;
   readonly description: string;
   readonly image?: string;
+  readonly createdAt?: Date;
 }
