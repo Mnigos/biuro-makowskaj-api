@@ -4,6 +4,8 @@ Simple api for Biuro Makowskaj's site
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-typescript.svg)](https://forthebadge.com)
 
+![dependency](https://david-dm.org/MoneyIgos/biuro-makowskaj-api.svg)
+
 ### Installation
 
 ```bash
