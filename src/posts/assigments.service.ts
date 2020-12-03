@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Assigment } from 'src/dto/assigment.interface';
@@ -16,13 +16,19 @@ export class AssigmentsService {
     return assigments;
   }
 
-  async getOneById(id): Promise<Assigment> {
+  async getOneById(id) {
     const assigment = await this.AssigmentModel.findOne({ _id: id }).exec();
+
+    if (!assigment) return HttpStatus.BAD_REQUEST;
+
     return assigment;
   }
 
-  async getOneByTitle(title): Promise<Assigment> {
+  async getOneByTitle(title) {
     const assigment = await this.AssigmentModel.findOne({ title }).exec();
+
+    if (!assigment) return HttpStatus.BAD_REQUEST;
+
     return assigment;
   }
 
@@ -31,8 +37,11 @@ export class AssigmentsService {
     return newAssigment;
   }
 
-  async update(assigment: Assigment): Promise<Assigment> {
+  async update(assigment: Assigment) {
     const { _id } = assigment;
+
+    if (!_id) return HttpStatus.BAD_REQUEST;
+
     this.AssigmentModel.update({ _id }, assigment);
     const foundAssigment = await this.AssigmentModel.findOne({ _id }).exec();
 
@@ -40,6 +49,8 @@ export class AssigmentsService {
   }
 
   async delete(id: string): Promise<{ deleted: boolean; message?: string }> {
+    if (!id) return { deleted: false, message: 'id is empty' };
+
     try {
       await this.AssigmentModel.remove({ id });
       return { deleted: true };

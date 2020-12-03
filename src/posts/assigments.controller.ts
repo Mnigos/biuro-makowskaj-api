@@ -40,7 +40,7 @@ export class AssigmentsController {
     return this.AssigmentsService.update(createAssigmentDto);
   }
 
-  @Delete('/delete')
+  @Delete('/delete/:id')
   delete(@Param('id') id: string): Promise<{ deleted: boolean }> {
     return this.AssigmentsService.delete(id);
   }
