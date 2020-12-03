@@ -12,5 +12,6 @@ import AssigmentSchema from '../models/assigment.model';
   ],
   controllers: [AssigmentsController],
   providers: [AssigmentsService],
+  exports: [AssigmentsService],
 })
 export class AssigmentsModule {}
