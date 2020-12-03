@@ -3,7 +3,6 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { getModelToken } from '@nestjs/mongoose';
-import { AssigmentsService } from '../src/posts/assigments.service';
 import Assigment from '../src/models/assigment.model';
 import { CreateAssigmentDto } from '../src/dto/create-assigment.dto';
 
