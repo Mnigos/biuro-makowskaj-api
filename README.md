@@ -36,6 +36,9 @@ $ yarn test
 # e2e tests
 $ yarn test:e2e
 
-# test coverage
+# unit test coverage
 $ yarn test:cov
+
+# total test coverage
+$ yarn test:cov:total
 ```
