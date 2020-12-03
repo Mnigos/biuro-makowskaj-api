@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - lts/*
+
+before_script:
+  - yarn
+  - yarn global add codecov
+
+script:
+  - yarn build
+  - yarn lint:fix
+  - yarn test
+
+after_success:
+  - codecov
+
+notifications:
+  email: never
