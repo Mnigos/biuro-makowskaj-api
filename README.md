@@ -4,6 +4,8 @@ Simple api for Biuro Makowskaj's site
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-typescript.svg)](https://forthebadge.com)
 
+
+[![codecov](https://codecov.io/gh/MoneyIgos/biuro-makowskaj-api/branch/master/graph/badge.svg?token=N2HMW7UTBG)](https://codecov.io/gh/MoneyIgos/biuro-makowskaj-api)
 ![dependency](https://david-dm.org/MoneyIgos/biuro-makowskaj-api.svg)
 
 ### Installation
