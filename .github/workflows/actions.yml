@@ -31,4 +31,4 @@ jobs:
           yarn lint
           echo run unit tests
           echo run e2e tests
-          codecov
+          yarn codecov
