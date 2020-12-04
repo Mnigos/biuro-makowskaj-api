@@ -27,7 +27,7 @@ jobs:
           yarn global add codecov
           echo building application
           yarn build
-          linting application
+          echo linting application
           yarn lint
           echo run unit tests
           yarn test
