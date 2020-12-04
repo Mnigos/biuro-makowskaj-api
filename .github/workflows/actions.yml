@@ -24,7 +24,7 @@ jobs:
           echo installing dependencies
           yarn
           echo installing codecov
-          yarn global add codecov
+          yarn add codecov
           echo building application
           yarn build
           echo linting application
