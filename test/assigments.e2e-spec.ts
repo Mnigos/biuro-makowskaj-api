@@ -3,8 +3,8 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
 import { getModelToken } from '@nestjs/mongoose';
-import Assigment from '../src/models/assigment.model';
 import { CreateAssigmentDto } from '../src/dto/create-assigment.dto';
+import Assigment from '../src/models/assigment.model';
 
 describe('Assigments (e2e)', () => {
   let app: INestApplication;
@@ -16,12 +16,19 @@ describe('Assigments (e2e)', () => {
   };
 
   beforeEach(async () => {
+    function mockUserModel(dto: CreateAssigmentDto) {
+      this.data = dto;
+      this.save = () => {
+        return this.data;
+      };
+    }
+
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
       providers: [
         {
           provide: getModelToken('Assigment'),
-          useValue: Assigment,
+          useValue: new mockUserModel(Assigment),
         },
       ],
     }).compile();
