@@ -83,9 +83,13 @@ describe('AssigmentsService', () => {
           .mockResolvedValueOnce(mockAssigment('a id', 'Some title')),
       })
     );
-    const findMockAssigment = mockAssigment('a id', 'Some title');
     const foundAssigment = await service.getOneById('an id');
-    expect(foundAssigment).toEqual(findMockAssigment);
+    expect(foundAssigment).toEqual({
+      id: 'a id',
+      title: 'Some title',
+      description: 'some description',
+      image: 'some image',
+    });
   });
   it('should getOne by name', async () => {
     jest.spyOn(model, 'findOne').mockReturnValueOnce(
@@ -95,9 +99,13 @@ describe('AssigmentsService', () => {
           .mockResolvedValueOnce(mockAssigment('a id', 'Some title')),
       })
     );
-    const findMockAssigment = mockAssigment('a id', 'Some title');
     const foundAssigment = await service.getOneByTitle('Some title');
-    expect(foundAssigment).toEqual(findMockAssigment);
+    expect(foundAssigment).toEqual({
+      id: 'a id',
+      title: 'Some title',
+      description: 'some description',
+      image: 'some image',
+    });
   });
   it('should insert a new assigment', async () => {
     jest.spyOn(model, 'create').mockResolvedValueOnce({

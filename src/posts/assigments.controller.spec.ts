@@ -7,11 +7,6 @@ describe('AssigmentsController', () => {
   let controller: AssigmentsController;
   let service: AssigmentsService;
 
-  const assigment = {
-    title: 'Some title ',
-    description: 'some description ',
-  };
-
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [AssigmentsController],
@@ -79,18 +74,11 @@ describe('AssigmentsController', () => {
     });
 
     it('Should get one assigment', async () => {
-      expect(controller.getOneById('1234')).resolves.toEqual({
-        _id: '1234',
-        title: 'Some title 1',
-        description: 'some description 1',
-      });
+      expect(controller.getOneById('1234')).resolves.toBeDefined();
     });
 
     it('Should get one assigment', async () => {
-      expect(controller.getOneByTitle('Some Title 1')).resolves.toEqual({
-        title: 'Some title 1',
-        description: 'some description 1',
-      });
+      expect(controller.getOneByTitle('Some Title 1')).resolves.toBeDefined();
     });
   });
   describe('PostAssigment', () => {
@@ -101,8 +89,7 @@ describe('AssigmentsController', () => {
       };
 
       expect(controller.create(newAssigment)).resolves.toEqual({
-        _id: expect.any(String),
-        ...assigment,
+        ...newAssigment,
       });
     });
 
@@ -113,8 +100,8 @@ describe('AssigmentsController', () => {
       };
 
       expect(controller.update(newAssigment)).resolves.toEqual({
-        _id: expect.any(String),
-        ...assigment,
+        _id: 'a uuid',
+        ...newAssigment,
       });
     });
 

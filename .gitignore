@@ -35,3 +35,6 @@ coverage
 
 # Enviroments files
 .env
+
+# stryker temp files
+.stryker-tmp

@@ -1,12 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AuthService } from './auth/auth.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { User } from './dto/user.interface';
 
 describe('AppController', () => {
   let controller: AppController;
-  let service: AuthService;
 
   const user: User = {
     username: 'John',
@@ -30,14 +28,10 @@ describe('AppController', () => {
             getUser: jest
               .fn()
               .mockResolvedValue((user: User) => Promise.resolve({ ...user })),
-            register: jest
-              .fn()
-              .mockImplementation((user: CreateUserDto) =>
-                Promise.resolve(true)
-              ),
+            register: jest.fn().mockImplementation(() => Promise.resolve(true)),
             login: jest
               .fn()
-              .mockImplementation((user: User) =>
+              .mockImplementation(() =>
                 Promise.resolve({ access_token: String })
               ),
           },
@@ -57,7 +51,7 @@ describe('AppController', () => {
   });
 
   it('Should register user', async () => {
-    expect(controller.register(user)).resolves.toBe({});
+    expect(controller.register(user)).resolves.toBe(true);
   });
 
   it('Should not get a user', async () => {
