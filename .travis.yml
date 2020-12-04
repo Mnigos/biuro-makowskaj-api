@@ -10,6 +10,7 @@ script:
   - yarn build
   - yarn lint
   - yarn test
+  - yarn test:e2e
 
 after_success:
   - codecov
