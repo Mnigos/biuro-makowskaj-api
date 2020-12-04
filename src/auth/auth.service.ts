@@ -14,10 +14,13 @@ export class AuthService {
   async validateUser(username: string, password: string): Promise<any> {
     const user = await this.usersService.findOne(username);
 
-    if (user && bcrypt.compare(password, user.password)) {
-      // Returning result without password
-      const { password, ...result } = user; //eslint-disable-line @typescript-eslint/no-unused-vars
-      return result;
+    if (user && (await bcrypt.compare(password, user.password))) {
+      console.log('e');
+      const { _id, username } = user;
+      return {
+        _id,
+        username,
+      };
     }
 
     return null;
@@ -31,7 +34,7 @@ export class AuthService {
     };
   }
 
-  async resister(userData: User): Promise<any> {
-    return await this.usersService.create(userData);
+  async register(user: User): Promise<any> {
+    return await this.usersService.create(user);
   }
 }

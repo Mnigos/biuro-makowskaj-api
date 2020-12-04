@@ -6,22 +6,21 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  private readonly User: User[] = [];
-
   constructor(@InjectModel('User') private readonly UserModel: Model<User>) {}
 
   async findOne(username: string): Promise<User | undefined> {
-    const user = await this.UserModel.find({ username }).exec();
-    return user;
+    return this.UserModel.findOne({ username }).exec();
   }
 
   async create(userData: User): Promise<any> {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(userData.password, salt);
 
-    return this.UserModel.create({
+    this.UserModel.create({
       username: userData.username,
       password: hashedPassword,
     } as User);
+
+    return true;
   }
 }
