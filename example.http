@@ -17,7 +17,7 @@ Content-Type: application/json
 
 {
   "username": "admin",
-  "password": "admin"
+  "password": "admawdin"
 }
 ###
 POST /auth/register HTTP/1.1
@@ -27,4 +27,11 @@ Content-Type: application/json
 {
   "username": "admin",
   "password": "admawdin"
+}
+###
+GET /user HTTP/1.1
+Host: localhost:3000
+
+{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjA3MDg0OTM2LCJleHAiOjE2MDc5NDg5MzZ9.wn5GGJRvekFymS5j_uXLf-h4tdIkN_sudubxTQs6XPw"
 }
