@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        env: 
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          PORT: 3000
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+        run: |
+          echo installing dependencies
+          yarn
+          echo installing codecov
+          yarn global add codecov
+          echo building application
+          yarn build
+          linting application
+          yarn lint
+          echo run unit tests
+          yarn test
+          echo run e2e tests
+          yarn test:e2e
