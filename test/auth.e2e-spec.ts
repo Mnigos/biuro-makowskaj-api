@@ -5,7 +5,6 @@ import { AppModule } from '../src/app.module';
 import { getModelToken } from '@nestjs/mongoose';
 import User from '../src/models/user.model';
 import { CreateUserDto } from '../src/dto/create-user.dto';
-import { resolve } from 'path';
 
 describe('Auth (e2e)', () => {
   let app: INestApplication;
