@@ -60,10 +60,6 @@ describe('AssigmentsController', () => {
     expect(controller).toBeDefined();
   });
 
-  afterAll(done => {
-    done();
-  });
-
   describe('getAssigments', () => {
     it('Should get an array of assigments', async () => {
       expect(controller.index()).resolves.toEqual([

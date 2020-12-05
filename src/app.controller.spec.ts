@@ -42,10 +42,6 @@ describe('AppController', () => {
     controller = module.get<AppController>(AppController);
   });
 
-  afterAll(done => {
-    done();
-  });
-
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });

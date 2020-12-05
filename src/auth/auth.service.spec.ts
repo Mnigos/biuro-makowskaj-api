@@ -67,10 +67,6 @@ describe('AuthService', () => {
     jest.clearAllMocks();
   });
 
-  afterAll(done => {
-    done();
-  });
-
   it('should be defined', () => {
     expect(service).toBeDefined();
   });

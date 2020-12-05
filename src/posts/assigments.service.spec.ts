@@ -68,10 +68,6 @@ describe('AssigmentsService', () => {
     jest.clearAllMocks();
   });
 
-  afterAll(done => {
-    done();
-  });
-
   it('should return all assigments', async () => {
     jest.spyOn(model, 'find').mockReturnValue({
       exec: jest.fn().mockResolvedValueOnce(assigmentsArray),

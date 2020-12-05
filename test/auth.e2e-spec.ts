@@ -41,9 +41,8 @@ describe('Auth (e2e)', () => {
     await app.init();
   });
 
-  afterAll(async done => {
+  afterAll(async () => {
     await app.close();
-    done();
   });
 
   it('Trying to get user and getting Unauthorized', () => {

@@ -37,9 +37,8 @@ describe('Assigments (e2e)', () => {
     await app.init();
   });
 
-  afterAll(async done => {
+  afterAll(async () => {
     await app.close();
-    done();
   });
 
   it('Getting all assigments', () => {
