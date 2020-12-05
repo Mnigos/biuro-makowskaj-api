@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows
+    runs-on: windows-2020
 
     steps:
       - uses: actions/checkout@v2
