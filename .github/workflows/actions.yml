@@ -21,10 +21,10 @@ jobs:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
         run: |
+          echo installing codecov
+          yarn global add codecov
           echo installing dependencies
           yarn
-          echo installing codecov
-          yarn add codecov
           echo building application
           yarn build
           echo linting application
