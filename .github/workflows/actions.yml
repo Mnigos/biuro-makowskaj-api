@@ -22,7 +22,7 @@ jobs:
           JWT_SECRET: ${{ secrets.JWT_SECRET }}
         run: |
           echo installing codecov
-          yarn global add codecov
+          yarn add codecov
           echo installing dependencies
           yarn
           echo building application
